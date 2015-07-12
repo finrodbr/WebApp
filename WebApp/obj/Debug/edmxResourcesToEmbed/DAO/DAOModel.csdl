@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="id_cidade" />
+    </Key>
+    <Property Name="id_cidade" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="customers" Relationship="Self.FK_customer_cidade" FromRole="cidade" ToRole="customer" />
+    <NavigationProperty Name="regioes" Relationship="Self.FK_regiao_cidade" FromRole="cidade" ToRole="regiao" />
+  </EntityType>
+  <EntityType Name="classificacao">
+    <Key>
+      <PropertyRef Name="id_classificacao" />
+    </Key>
+    <Property Name="id_classificacao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="customers" Relationship="Self.FK_customer_classificacao" FromRole="classificacao" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id_customer" />
+    </Key>
+    <Property Name="id_customer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="sexo" Type="Int32" Nullable="false" />
+    <Property Name="id_cidade" Type="Int32" Nullable="false" />
+    <Property Name="id_regiao" Type="Int32" Nullable="false" />
+    <Property Name="ultima_compra" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="id_classificacao" Type="Int32" Nullable="false" />
+    <Property Name="id_usuario" Type="Int32" Nullable="false" />
+    <Property Name="ativo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cidade" Relationship="Self.FK_customer_cidade" FromRole="customer" ToRole="cidade" />
+    <NavigationProperty Name="classificacao" Relationship="Self.FK_customer_classificacao" FromRole="customer" ToRole="classificacao" />
+    <NavigationProperty Name="regiao" Relationship="Self.FK_customer_regiao" FromRole="customer" ToRole="regiao" />
+    <NavigationProperty Name="usuario" Relationship="Self.FK_customer_usuario" FromRole="customer" ToRole="usuario" />
+    <Property Name="phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="nivel_acesso">
+    <Key>
+      <PropertyRef Name="valor" />
+    </Key>
+    <Property Name="id_nivel_acesso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="valor" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="usuarios" Relationship="Self.FK_usuario_nivel_acesso" FromRole="nivel_acesso" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="regiao">
+    <Key>
+      <PropertyRef Name="id_regiao" />
+    </Key>
+    <Property Name="id_regiao" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id_cidade" Type="Int32" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="cidade" Relationship="Self.FK_regiao_cidade" FromRole="regiao" ToRole="cidade" />
+    <NavigationProperty Name="customers" Relationship="Self.FK_customer_regiao" FromRole="regiao" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="senha" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cidade" Type="Int32" Nullable="false" />
+    <Property Name="valor_nivel_acesso" Type="Int32" Nullable="false" />
+    <Property Name="ativo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="customers" Relationship="Self.FK_customer_usuario" FromRole="usuario" ToRole="customer" />
+    <NavigationProperty Name="nivel_acesso" Relationship="Self.FK_usuario_nivel_acesso" FromRole="usuario" ToRole="nivel_acesso" />
+  </EntityType>
+  <Association Name="FK_customer_cidade">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_regiao_cidade">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="regiao" Type="Self.regiao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="regiao">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_classificacao">
+    <End Role="classificacao" Type="Self.classificacao" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classificacao">
+        <PropertyRef Name="id_classificacao" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_classificacao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_regiao">
+    <End Role="regiao" Type="Self.regiao" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regiao">
+        <PropertyRef Name="id_regiao" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_regiao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_nivel_acesso">
+    <End Role="nivel_acesso" Type="Self.nivel_acesso" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nivel_acesso">
+        <PropertyRef Name="valor" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="valor_nivel_acesso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DAOModelEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cidades" EntityType="Self.cidade" />
+    <EntitySet Name="classificacoes" EntityType="Self.classificacao" />
+    <EntitySet Name="customers" EntityType="Self.customer" />
+    <EntitySet Name="niveis_acesso" EntityType="Self.nivel_acesso" />
+    <EntitySet Name="regioes" EntityType="Self.regiao" />
+    <EntitySet Name="usuarios" EntityType="Self.usuario" />
+    <AssociationSet Name="FK_customer_cidade" Association="Self.FK_customer_cidade">
+      <End Role="cidade" EntitySet="cidades" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_regiao_cidade" Association="Self.FK_regiao_cidade">
+      <End Role="cidade" EntitySet="cidades" />
+      <End Role="regiao" EntitySet="regioes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_classificacao" Association="Self.FK_customer_classificacao">
+      <End Role="classificacao" EntitySet="classificacoes" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_regiao" Association="Self.FK_customer_regiao">
+      <End Role="regiao" EntitySet="regioes" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_usuario" Association="Self.FK_customer_usuario">
+      <End Role="usuario" EntitySet="usuarios" />
+      <End Role="customer" EntitySet="customers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_nivel_acesso" Association="Self.FK_usuario_nivel_acesso">
+      <End Role="nivel_acesso" EntitySet="niveis_acesso" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

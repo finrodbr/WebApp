@@ -1,0 +1,161 @@
+﻿body {
+    margin: 0;
+	padding: 0;
+    font-family: Arial;
+}
+input, select {
+    border: 2px solid #000;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+span.label {
+    width: 110px;
+    text-align:right;
+    padding-left: 5px;
+    display: inline-block;
+}
+span.until {
+    padding: 0 5px;
+}
+#divMain {
+    padding: 15px;
+}
+
+#loginDiv {
+    width: 350px;
+    height: 230px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    position: absolute;
+    border: 2px solid #000;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+input[type=submit], button {
+    min-width: 85px;
+}
+#divErr {
+    height: 60px;
+    overflow: hidden;
+    padding: 10px 0 0 20px;
+}
+.errMsg {
+    color: red;
+    font-weight: bold;
+    width: 320px;
+}
+
+#headerDiv {
+    width: 600px;
+    margin: auto;
+    border: 1px solid #ccc;
+    height: 60px;
+    padding: 5px;
+}
+#welcomeMessageDiv {
+    padding: 10px;
+}
+input[type=submit], input[type=reset], button {
+    min-width: 100px;
+    cursor: pointer;
+}
+.menu {
+    max-width: 280px;
+}
+.mnuAdmin {
+    float:left;
+}
+.mnuLogout {
+    float: right;
+    text-align: right;
+}
+#menuDiv a {
+    border: 1px solid #000;
+    background-color: #ccc;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-color: #000;
+    text-decoration: none;
+    padding: 2px 10px;
+    color: #000;
+}
+.clear {
+    clear: both;
+}
+#filtersDiv, #gridDiv {
+    width: 1000px;
+    margin: auto;
+    top: 100px;
+    position: relative;
+}
+#gridDiv {
+    padding-top: 30px;
+}
+    #gridDiv table {
+        width: 900px;
+        margin:auto;
+    }
+
+.row {
+    width: 780px;
+    margin: auto;
+    padding: 7px 0;
+}
+.left {
+    float:left;
+}
+.col1 {
+    width: 300px;
+}
+.col2 {
+    width: 150px;
+    text-align: right;
+}
+.col3 {
+    width: 700px;
+}
+select.fullWidth {
+    min-width: 172px;
+}
+
+.trow1 {
+    text-align: left;
+    background-color: #fff;
+    font-size: small;
+}
+.trow2 {
+    text-align: left;
+    background-color: #eee;
+    font-size: small;
+}
+.theader {
+    text-align: left;
+    background-color: #ccc;
+    font-size: small; 
+}
+    .theader a {
+        text-decoration: none;
+        color: #000;
+    }
+
+.arrow-up {
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid black;
+}
+
+.arrow-down {
+	width: 0; 
+	height: 0; 
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-top: 5px solid black;
+} 

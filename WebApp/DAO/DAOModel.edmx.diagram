@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="94697d47535345529f8448f06a04a61a" Name="Diagram1">
+        <EntityTypeShape EntityType="DAOModel.cidade" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAOModel.classificacao" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAOModel.customer" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAOModel.nivel_acesso" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAOModel.regiao" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAOModel.usuario" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <AssociationConnector Association="DAOModel.FK_customer_cidade" ManuallyRouted="false" />
+        <AssociationConnector Association="DAOModel.FK_regiao_cidade" ManuallyRouted="false" />
+        <AssociationConnector Association="DAOModel.FK_customer_classificacao" ManuallyRouted="false" />
+        <AssociationConnector Association="DAOModel.FK_customer_regiao" ManuallyRouted="false" />
+        <AssociationConnector Association="DAOModel.FK_customer_usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="DAOModel.FK_usuario_nivel_acesso" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="id_cidade" />
+    </Key>
+    <Property Name="id_cidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="classificacao">
+    <Key>
+      <PropertyRef Name="id_classificacao" />
+    </Key>
+    <Property Name="id_classificacao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="descricao" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id_customer" />
+    </Key>
+    <Property Name="id_customer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="sexo" Type="int" Nullable="false" />
+    <Property Name="id_cidade" Type="int" Nullable="false" />
+    <Property Name="id_regiao" Type="int" Nullable="false" />
+    <Property Name="phone" Type="nvarchar" MaxLength="20" />
+    <Property Name="ultima_compra" Type="date" Nullable="false" />
+    <Property Name="id_classificacao" Type="int" Nullable="false" />
+    <Property Name="id_usuario" Type="int" Nullable="false" />
+    <Property Name="ativo" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="nivel_acesso">
+    <Key>
+      <PropertyRef Name="valor" />
+    </Key>
+    <Property Name="id_nivel_acesso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="valor" Type="int" Nullable="false" />
+    <Property Name="nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="descricao" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="regiao">
+    <Key>
+      <PropertyRef Name="id_regiao" />
+    </Key>
+    <Property Name="id_regiao" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_cidade" Type="int" Nullable="false" />
+    <Property Name="nome" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id_usuario" />
+    </Key>
+    <Property Name="id_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="senha" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="cidade" Type="int" Nullable="false" />
+    <Property Name="valor_nivel_acesso" Type="int" Nullable="false" />
+    <Property Name="ativo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_customer_cidade">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_classificacao">
+    <End Role="classificacao" Type="Self.classificacao" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="classificacao">
+        <PropertyRef Name="id_classificacao" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_classificacao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_regiao">
+    <End Role="regiao" Type="Self.regiao" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="regiao">
+        <PropertyRef Name="id_regiao" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_regiao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_usuario">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id_usuario" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="id_usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_regiao_cidade">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="regiao" Type="Self.regiao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="id_cidade" />
+      </Principal>
+      <Dependent Role="regiao">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_usuario_nivel_acesso">
+    <End Role="nivel_acesso" Type="Self.nivel_acesso" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="nivel_acesso">
+        <PropertyRef Name="valor" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="valor_nivel_acesso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DAOModelStoreContainer">
+    <EntitySet Name="cidade" EntityType="Self.cidade" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="classificacao" EntityType="Self.classificacao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="nivel_acesso" EntityType="Self.nivel_acesso" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="regiao" EntityType="Self.regiao" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_customer_cidade" Association="Self.FK_customer_cidade">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_classificacao" Association="Self.FK_customer_classificacao">
+      <End Role="classificacao" EntitySet="classificacao" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_regiao" Association="Self.FK_customer_regiao">
+      <End Role="regiao" EntitySet="regiao" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_usuario" Association="Self.FK_customer_usuario">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_regiao_cidade" Association="Self.FK_regiao_cidade">
+      <End Role="cidade" EntitySet="cidade" />
+      <End Role="regiao" EntitySet="regiao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_usuario_nivel_acesso" Association="Self.FK_usuario_nivel_acesso">
+      <End Role="nivel_acesso" EntitySet="nivel_acesso" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

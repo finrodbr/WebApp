@@ -1,0 +1,15 @@
+C:\Users\Alan_Aguirre\Desktop\Stefanini - Prova Técnica\Solution\WebApp\WebApp\bin\WebApp.dll
+C:\Users\Alan_Aguirre\Desktop\Stefanini - Prova Técnica\Solution\WebApp\WebApp\bin\WebApp.pdb
+C:\Users\Alan_Aguirre\Desktop\Stefanini - Prova Técnica\Solution\WebApp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\Alan_Aguirre\Desktop\Stefanini - Prova Técnica\Solution\WebApp\WebApp\obj\Debug\WebApp.dll
+C:\Users\Alan_Aguirre\Desktop\Stefanini - Prova Técnica\Solution\WebApp\WebApp\obj\Debug\WebApp.pdb
+E:\xampp\htdocs\WebApp\WebApp\bin\WebApp.dll.config
+E:\xampp\htdocs\WebApp\WebApp\bin\WebApp.dll
+E:\xampp\htdocs\WebApp\WebApp\bin\WebApp.pdb
+E:\xampp\htdocs\WebApp\WebApp\bin\EntityFramework.dll
+E:\xampp\htdocs\WebApp\WebApp\bin\EntityFramework.SqlServer.dll
+E:\xampp\htdocs\WebApp\WebApp\bin\EntityFramework.xml
+E:\xampp\htdocs\WebApp\WebApp\bin\EntityFramework.SqlServer.xml
+E:\xampp\htdocs\WebApp\WebApp\obj\Debug\WebApp.dll
+E:\xampp\htdocs\WebApp\WebApp\obj\Debug\WebApp.pdb
+E:\xampp\htdocs\WebApp\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache

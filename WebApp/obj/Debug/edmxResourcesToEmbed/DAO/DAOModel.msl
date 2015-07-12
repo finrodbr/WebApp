@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DAOModelStoreContainer" CdmEntityContainer="DAOModelEntities">
+    <EntitySetMapping Name="cidades">
+      <EntityTypeMapping TypeName="DAOModel.cidade">
+        <MappingFragment StoreEntitySet="cidade">
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="classificacoes">
+      <EntityTypeMapping TypeName="DAOModel.classificacao">
+        <MappingFragment StoreEntitySet="classificacao">
+          <ScalarProperty Name="id_classificacao" ColumnName="id_classificacao" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="DAOModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="id_regiao" ColumnName="id_regiao" />
+          <ScalarProperty Name="ultima_compra" ColumnName="ultima_compra" />
+          <ScalarProperty Name="id_classificacao" ColumnName="id_classificacao" />
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="niveis_acesso">
+      <EntityTypeMapping TypeName="DAOModel.nivel_acesso">
+        <MappingFragment StoreEntitySet="nivel_acesso">
+          <ScalarProperty Name="id_nivel_acesso" ColumnName="id_nivel_acesso" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regioes">
+      <EntityTypeMapping TypeName="DAOModel.regiao">
+        <MappingFragment StoreEntitySet="regiao">
+          <ScalarProperty Name="id_regiao" ColumnName="id_regiao" />
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="DAOModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id_usuario" ColumnName="id_usuario" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="valor_nivel_acesso" ColumnName="valor_nivel_acesso" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
